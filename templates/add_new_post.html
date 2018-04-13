@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add a New Blog Entry</h1>
+<form method='POST'>
+    <table>
+        <tr>
+            <td>
+                <lable>
+                    Title for your new blog:
+                    <input type='text' name='post_title' />
+                </lable>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <lable>
+                    Your new blog:
+                    <input type='text' name='post_content' />
+                </lable>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type='submit' value='Add New Entry' />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!--{% if entry|length == 0 %}
+<p>No Entries Yet!</p>
+{% endif %}-->
+<ul>
+    {% for post in post_title %}
+        <li>{{post.title}}</li>
+    {% endfor %}
+
+</ul>
+{% endblock %}
