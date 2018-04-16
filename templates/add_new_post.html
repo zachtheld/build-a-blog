@@ -2,21 +2,30 @@
 {% block content %}
 <h1>Add a New Blog Entry</h1>
 <form method='POST'>
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <div class='error'>{{message}}</div>
+        {% endfor %}
+        {% endwith %}
+
     <table>
         <tr>
             <td>
-                <lable>
-                    Title for your new blog:
-                    <input type='text' name='post_title' />
-                </lable>
+                <lable>Title for your new blog:</lable>
             </td>
         </tr>
         <tr>
             <td>
-                <lable>
-                    Your new blog:
-                    <input type='text' name='post_content' />
-                </lable>
+                <input type='text' name='title' />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <lable>Your new blog post:</lable>
+            </td>
+        </tr>
+            <td>
+                <textarea type='text' name='body' ></textarea>
             </td>
         </tr>
         <tr>
@@ -26,14 +35,7 @@
         </tr>
     </table>
 </form>
-
-<!--{% if entry|length == 0 %}
-<p>No Entries Yet!</p>
-{% endif %}-->
-<ul>
-    {% for post in post_title %}
-        <li>{{post.title}}</li>
-    {% endfor %}
-
-</ul>
+{% for post in posts %}
+        <h1>{{post.title}}</h1>
+{% endfor %}
 {% endblock %}
